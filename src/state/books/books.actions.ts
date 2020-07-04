@@ -1,4 +1,4 @@
-import { Book } from "../../App";
+import { Book } from "../../Components/App";
 
 export type BooksActions =
   | BooksRequested
