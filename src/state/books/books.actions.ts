@@ -7,7 +7,10 @@ export type BooksActions =
 
 ////////////////
 
-export const booksRequested = () => ({ type: "BOOKS_REQUESTED" as const });
+export const booksRequested = () => {
+  console.log("IN IN ");
+  return { type: "BOOKS_REQUESTED" as const };
+};
 
 export type BooksRequested = ReturnType<typeof booksRequested>;
 

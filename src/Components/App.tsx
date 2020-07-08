@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import { Book } from "./book/book";
 import axios from "axios";
+import { connectApp, appProps } from "./App.connect";
 
 export type Book = {
   id: string;
   title: string;
 };
-const App: React.FC<{}> = () => {
+
+const Component: React.FC<appProps> = ({ fetchBooks }) => {
   const [books, setBooks] = React.useState<Book[]>();
 
   const fetchBook = () => {
@@ -19,6 +21,10 @@ const App: React.FC<{}> = () => {
       .catch((e) => console.error(e));
     return books;
   };
+
+  React.useEffect(() => {
+    fetchBooks();
+  }, [fetchBooks]);
 
   return (
     <div className="App">
@@ -43,5 +49,7 @@ const App: React.FC<{}> = () => {
     </div>
   );
 };
+
+const App = connectApp(Component);
 
 export default App;
